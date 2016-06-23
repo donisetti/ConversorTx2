@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversorTX2", "ConversorTX2\ConversorTX2.csproj", "{D77F2198-9C37-48C0-AFB4-FDA06733297E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversorTX2.Contexto", "ConversorTX2.Contexto\ConversorTX2.Contexto.csproj", "{360CED60-6730-461E-89BB-56E31C34C262}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D77F2198-9C37-48C0-AFB4-FDA06733297E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D77F2198-9C37-48C0-AFB4-FDA06733297E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D77F2198-9C37-48C0-AFB4-FDA06733297E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D77F2198-9C37-48C0-AFB4-FDA06733297E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{360CED60-6730-461E-89BB-56E31C34C262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360CED60-6730-461E-89BB-56E31C34C262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360CED60-6730-461E-89BB-56E31C34C262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360CED60-6730-461E-89BB-56E31C34C262}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
