@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using ConversorTX2.Contexto;
 
@@ -11,7 +12,21 @@ namespace ConversorTX2
     {
         static void Main(string[] args)
         {
+
+            string servidor = "https://managersaashom.tecnospeed.com.br";
+            string porta = "7071";
+            string grupo = "edoc";
+            string cnpj = "08187168000160";
+            string usuario = "admin";
+            string senha = "123mudar";
+            string documento = "nfe";
+            string api = "envia";
+
+            string arqTX2 = "";
+           
             string vazio = "";
+
+            Console.WriteLine("Transmissao Nfe");
 
             // Conecta com Base de Dados
             using (DBContexto db = new DBContexto())
@@ -29,10 +44,10 @@ namespace ConversorTX2
 
                 foreach (var nota in dados)
                 {
-                    string arq = $"C:\\Projetos\\Nutryervas\\TX2\\{nota.VDA_Codigo.ToString("000000")}.txt";
+                    //string arq = $"C:\\Projetos\\Nutryervas\\TX2\\{nota.VDA_Codigo.ToString("000000")}.txt";
 
-                    var fs = new FileStream(arq, FileMode.Create, FileAccess.Write);
-                    var arquivo = new StreamWriter(fs, Encoding.UTF8);
+                    //var fs = new FileStream(arq, FileMode.Create, FileAccess.Write);
+                    //var arquivo = new StreamWriter(fs, Encoding.UTF8);
 
                     var tx2 = new StringBuilder();
 
@@ -197,19 +212,67 @@ namespace ConversorTX2
                     
 
                     // Grava os dados no arquivo
-                    arquivo.Write(tx2);
-                   
+                    //arquivo.Write(tx2);
 
-                    arquivo.Close();
+                    RequisicaoPost(tx2.ToString(), usuario, senha);
 
-                    Console.Write(".");
+                    Console.Write(" Transmissão pronta.");
+                    // arquivo.Close();
+
+
+                   // Console.Write(".");
                   
                 }
 
                
             }
-            Console.Write(" Operação completa.");
+           
+
+
+
+            //using (var streamReader = new StreamReader(@"C:\\Projetos\\Nutryervas\\TX2\\000007.TXT", Encoding.UTF8))
+            //{
+            //    arqTX2 = streamReader.ReadToEnd();
+            //}
+
+
+
+            //RequisicaoGet(arq, usuario, senha);
+          
+
+           // Console.Write(" transmissao completa.");
+
+
             Console.ReadLine();
+        }
+
+        private static void RequisicaoPost(string tx2, string usuario, string senha)
+        {
+
+            //
+
+            var url = " https://managersaashom.tecnospeed.com.br:7071/ManagerAPIWeb/nfe/envia?CNPJ=08187168000160&grupo=edoc";
+
+            HttpWebRequest objRequest = (HttpWebRequest)WebRequest.Create(url + "&arquivo=" + tx2);
+
+            byte[] credentialBuffer = new UTF8Encoding().GetBytes(usuario + ":" + senha);
+            objRequest.Headers["Authorization"] = "Basic " + Convert.ToBase64String(credentialBuffer);
+
+            objRequest.Method = "POST";
+
+            HttpWebResponse objResponse = (HttpWebResponse)objRequest.GetResponse();
+
+            Stream stream = objResponse.GetResponseStream();
+
+            Encoding encoding = Encoding.Default;
+
+            StreamReader response = new StreamReader(stream, encoding);
+
+            var retorno = response.ReadToEnd();
+
+            Console.WriteLine(retorno);
+
+            //Console.ReadLine();
         }
     }
 }
