@@ -37,9 +37,9 @@ namespace ConversorTX2
                     var tx2 = new StringBuilder();
 
                     tx2.AppendLine($"formato=tx2{vazio}");
-                    tx2.AppendLine($"numLote = 0");
-                    tx2.AppendLine($"grupo = edoc");
-                    tx2.AppendLine($"cnpj = 08187168000160");
+                    tx2.AppendLine($"numLote=0");
+                    tx2.AppendLine($"grupo=edoc");
+                    tx2.AppendLine($"cnpj=08187168000160");
                     tx2.AppendLine($"INCLUIR{vazio}");
                     tx2.AppendLine($"Id_A03=0{vazio}");
                     tx2.AppendLine($"versao_A02=3.10{vazio}");
@@ -50,8 +50,8 @@ namespace ConversorTX2
                     tx2.AppendLine($"mod_B06=55{vazio}");
                     tx2.AppendLine($"serie_B07=666{vazio}");
                     tx2.AppendLine($"nNF_B08=1400{vazio}");
-                    tx2.AppendLine($"dhEmi_B09={DateTime.Now.ToString("O")}");
-                    tx2.AppendLine($"dhSaiEnt_B10={DateTime.Now.ToString("O")}");
+                    tx2.AppendLine($"dhEmi_B09={DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz")}");
+                    tx2.AppendLine($"dhSaiEnt_B10={DateTime.Now.ToString("yyyy-MM-ddTHH:mm:sszzz")}");
                     tx2.AppendLine($"tpNF_B11=1{vazio}");
                     tx2.AppendLine($"idDest_B11a=2{vazio}");
                     tx2.AppendLine($"cMunFG_B12=4115200{vazio}");
@@ -80,45 +80,32 @@ namespace ConversorTX2
                     tx2.AppendLine($"CEP_C13=87020025{vazio}");
                     tx2.AppendLine($"cPais_C14=1058{vazio}");
                     tx2.AppendLine($"xPais_C15=Brasil{vazio}");
-                    tx2.AppendLine($"fone_C16=4430379500{vazio}");
+                 
                     tx2.AppendLine($"IE_C17=9044016688{vazio}");
                    
-
-                    tx2.AppendLine($"CPF_E03=81250814294{vazio}");
-                    tx2.AppendLine($"xNome_E04=NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL{vazio}");
-                    tx2.AppendLine($"xLgr_E06=Rua Parnaiba{vazio}");
-                    tx2.AppendLine($"nro_E07=897{vazio}");
-                    tx2.AppendLine($"xBairro_E09=Santo Antao{vazio}");
-                    tx2.AppendLine($"cMun_E10=4302105{vazio}");
-                    tx2.AppendLine($"xMun_E11=Bento Goncalves{vazio}");
-                    tx2.AppendLine($"UF_E12=RS{vazio}");
-                    tx2.AppendLine($"CEP_E13=95700000{vazio}");
-                    tx2.AppendLine($"cPais_E14=1058{vazio}");
-                    tx2.AppendLine($"xPais_E15=BRASIL{vazio}");                   
-                    tx2.AppendLine($"IE_C17 = 9044016688{vazio}");
-                   
+                    
                     tx2.AppendLine($"CNPJ_E02=00169604000166{vazio}");
-                    tx2.AppendLine($"xNome_E04 = NF - E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL{vazio}");
-                    tx2.AppendLine($"xLgr_E06 = RUA DO CENTRO{vazio}");
-                    tx2.AppendLine($"nro_E07 = 897{vazio}");
-                    tx2.AppendLine($"xBairro_E09 = CENTRO{vazio}");
-                    tx2.AppendLine($"cMun_E10 = 4302303{vazio}");
-                    tx2.AppendLine($"xMun_E11 = Bom Jesus{vazio}");
-                    tx2.AppendLine($"UF_E12 = RS{vazio}");
-                    tx2.AppendLine($"CEP_E13 = 87500000{vazio}");
-                    tx2.AppendLine($"cPais_E14 = 1058{vazio}");
-                    tx2.AppendLine($"xPais_E15 = BRASIL{vazio}");
-                    tx2.AppendLine($"fone_E16 = 445555555{vazio}");
-                    tx2.AppendLine($"indIEDest_E16a = 1{vazio}");
-                    tx2.AppendLine($"IE_E17 = 1570027061{vazio}");
+                    tx2.AppendLine($"xNome_E04=NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL{vazio}");
+                    tx2.AppendLine($"xLgr_E06=RUA DO CENTRO{vazio}");
+                    tx2.AppendLine($"nro_E07=897{vazio}");
+                    tx2.AppendLine($"xBairro_E09=CENTRO{vazio}");
+                    tx2.AppendLine($"cMun_E10=4302303{vazio}");
+                    tx2.AppendLine($"xMun_E11=Bom Jesus{vazio}");
+                    tx2.AppendLine($"UF_E12=RS{vazio}");
+                    tx2.AppendLine($"CEP_E13=87500000{vazio}");
+                    tx2.AppendLine($"cPais_E14=1058{vazio}");
+                    tx2.AppendLine($"xPais_E15=BRASIL{vazio}");
+                    tx2.AppendLine($"fone_E16=445555555{vazio}");
+                    tx2.AppendLine($"indIEDest_E16a=1{vazio}");
+                    tx2.AppendLine($"IE_E17=1570027061{vazio}");
                                 
-
+                    int  n = 1;
                     foreach (var produto in nota.ITENS_VENDA)
                     {
 
-                        tx2.AppendLine($"INCLUIRITEM ");
+                        tx2.AppendLine($"INCLUIRITEM");
 
-                        tx2.AppendLine($"nItem_H02=1{vazio}");
+                        tx2.AppendLine($"nItem_H02={n++}");
                         tx2.AppendLine($"cProd_I02=1{vazio}");
                         tx2.AppendLine($"CEAN_I03={vazio}");
                         tx2.AppendLine($"xProd_I04=ADAPTADOR WIRELESS USB INTELBRAS  54 MBPS WBG901 (OT0909002580){vazio}");
@@ -136,77 +123,77 @@ namespace ConversorTX2
 
                         tx2.AppendLine($"orig_N11=0{vazio}");
 
-                        tx2.AppendLine($"CST_N12 = 00{vazio}");
-                        tx2.AppendLine($"MODBC_N13 = 3{vazio}");
-                        tx2.AppendLine($"VBC_N15 = 155.20{vazio}");
-                        tx2.AppendLine($"PICMS_N16 = 12.00{vazio}");
-                        tx2.AppendLine($"VICMS_N17 = 18.62{vazio}");
-                        tx2.AppendLine($"modBCST_N18 = 4{vazio}");
-                        tx2.AppendLine($"vBCST_N21 = 0.00{vazio}");
-                        tx2.AppendLine($"pICMSST_N22 = 0.00{vazio}");
-                        tx2.AppendLine($"vICMSST_N23 = 0.00{vazio}");
+                        tx2.AppendLine($"CST_N12=00{vazio}");
+                        tx2.AppendLine($"MODBC_N13=3{vazio}");
+                        tx2.AppendLine($"VBC_N15=155.20{vazio}");
+                        tx2.AppendLine($"PICMS_N16=12.00{vazio}");
+                        tx2.AppendLine($"VICMS_N17=18.62{vazio}");
+                        tx2.AppendLine($"modBCST_N18=4{vazio}");
+                        tx2.AppendLine($"vBCST_N21=0.00{vazio}");
+                        tx2.AppendLine($"pICMSST_N22=0.00{vazio}");
+                        tx2.AppendLine($"vICMSST_N23=0.00{vazio}");
 
-                        tx2.AppendLine($"CST_Q06 = 99{vazio}");
-                        tx2.AppendLine($"VBC_Q07 = 155.20{vazio}");
-                        tx2.AppendLine($"PPIS_Q08 = 5.00{vazio}");
-                        tx2.AppendLine($"VPIS_Q09 = 7.76{vazio}");
+                        tx2.AppendLine($"CST_Q06=99{vazio}");
+                        tx2.AppendLine($"VBC_Q07=155.20{vazio}");
+                        tx2.AppendLine($"PPIS_Q08=5.00{vazio}");
+                        tx2.AppendLine($"VPIS_Q09=7.76{vazio}");
 
-                        tx2.AppendLine($"CST_S06 = 99{vazio}");
-                        tx2.AppendLine($"VBC_S07 = 155.20{vazio}");
-                        tx2.AppendLine($"PCOFINS_S08 = 5.00{vazio}");
-                        tx2.AppendLine($"VCOFINS_S11 = 7.76{vazio}");
+                        tx2.AppendLine($"CST_S06=99{vazio}");
+                        tx2.AppendLine($"VBC_S07=155.20{vazio}");
+                        tx2.AppendLine($"PCOFINS_S08=5.00{vazio}");
+                        tx2.AppendLine($"VCOFINS_S11=7.76{vazio}");
 
 
 
-                        tx2.AppendLine($"SALVARITEM  ");
+                        tx2.AppendLine($"SALVARITEM");
                     }
 
-                    tx2.AppendLine($"vBC_W03 = 155.20{vazio}");
-                    tx2.AppendLine($"vICMS_W04 = 18.62{vazio}");
-                    tx2.AppendLine($"vICMSDeson_W04a = 0.00{vazio}");
-                    tx2.AppendLine($"vBCST_W05 = 0.00{vazio}");
-                    tx2.AppendLine($"vST_W06 = 0.00{vazio}");
-                    tx2.AppendLine($"vProd_W07 = 155.20{vazio}");
-                    tx2.AppendLine($"vFrete_W08 = 0.00{vazio}");
-                    tx2.AppendLine($"vSeg_W09 = 0.00{vazio}");
-                    tx2.AppendLine($"vDesc_W10 = 0.00{vazio}");
-                    tx2.AppendLine($"vII_W11 = 0.00{vazio}");
-                    tx2.AppendLine($"vIPI_W12 = 0.00{vazio}");
-                    tx2.AppendLine($"vPIS_W13 = 7.76{vazio}");
-                    tx2.AppendLine($"vCOFINS_W14 = 7.76{vazio}");
-                    tx2.AppendLine($"vOutro_W15 = 0.00{vazio}");
-                    tx2.AppendLine($"vNF_W16 = 155.20{vazio}");
+                    tx2.AppendLine($"vBC_W03=155.20{vazio}");
+                    tx2.AppendLine($"vICMS_W04=18.62{vazio}");
+                    tx2.AppendLine($"vICMSDeson_W04a=0.00{vazio}");
+                    tx2.AppendLine($"vBCST_W05=0.00{vazio}");
+                    tx2.AppendLine($"vST_W06=0.00{vazio}");
+                    tx2.AppendLine($"vProd_W07=155.20{vazio}");
+                    tx2.AppendLine($"vFrete_W08=0.00{vazio}");
+                    tx2.AppendLine($"vSeg_W09=0.00{vazio}");
+                    tx2.AppendLine($"vDesc_W10=0.00{vazio}");
+                    tx2.AppendLine($"vII_W11=0.00{vazio}");
+                    tx2.AppendLine($"vIPI_W12=0.00{vazio}");
+                    tx2.AppendLine($"vPIS_W13=7.76{vazio}");
+                    tx2.AppendLine($"vCOFINS_W14=7.76{vazio}");
+                    tx2.AppendLine($"vOutro_W15=0.00{vazio}");
+                    tx2.AppendLine($"vNF_W16=155.20{vazio}");
 
 
-                    tx2.AppendLine($"modFrete_X02 = 0{vazio}");
+                    tx2.AppendLine($"modFrete_X02=0{vazio}");
 
                     tx2.AppendLine($"INCLUIRCOBRANCA{vazio}");
-                    tx2.AppendLine($"nFat_Y03 = 2000{vazio}");
-                    tx2.AppendLine($"vOrig_Y04 = 500.00{vazio}");
-                    tx2.AppendLine($"vDesc_Y05 = 100.00{vazio}");
-                    tx2.AppendLine($"vLiq_Y06 = 400.00{vazio}");
+                    tx2.AppendLine($"nFat_Y03=2000{vazio}");
+                    tx2.AppendLine($"vOrig_Y04=500.00{vazio}");
+                    tx2.AppendLine($"vDesc_Y05=100.00{vazio}");
+                    tx2.AppendLine($"vLiq_Y06=400.00{vazio}");
 
-                    tx2.AppendLine($"nDup_Y08 = 1{vazio}");
-                    tx2.AppendLine($"dVenc_Y09 = 2009 - 04 - 25{vazio}");
-                    tx2.AppendLine($"vDup_Y10 = 100.00{vazio}");
+                    tx2.AppendLine($"nDup_Y08=1{vazio}");
+                    tx2.AppendLine($"dVenc_Y09=2009-04-25{vazio}");
+                    tx2.AppendLine($"vDup_Y10=100.00{vazio}");
 
-                    tx2.AppendLine($"nDup_Y08 = 2{vazio}");
-                    tx2.AppendLine($"dVenc_Y09 = 2009 - 04 - 25{vazio}");
-                    tx2.AppendLine($"vDup_Y10 = 100.00{vazio}");
+                    tx2.AppendLine($"nDup_Y08=2{vazio}");
+                    tx2.AppendLine($"dVenc_Y09=2009-04-25{vazio}");
+                    tx2.AppendLine($"vDup_Y10=100.00{vazio}");
 
-                    tx2.AppendLine($"nDup_Y08 = 3{vazio}");
-                    tx2.AppendLine($"dVenc_Y09 = 2009 - 04 - 25{vazio}");
-                    tx2.AppendLine($"vDup_Y10 = 100.00{vazio}");
+                    tx2.AppendLine($"nDup_Y08=3{vazio}");
+                    tx2.AppendLine($"dVenc_Y09=2009-04-25{vazio}");
+                    tx2.AppendLine($"vDup_Y10=100.00{vazio}");
 
-                    tx2.AppendLine($"nDup_Y08 = 4{vazio}");
-                    tx2.AppendLine($"dVenc_Y09 = 2009 - 04 - 25{vazio}");
-                    tx2.AppendLine($"vDup_Y10 = 100.00{vazio}");
+                    tx2.AppendLine($"nDup_Y08=4{vazio}");
+                    tx2.AppendLine($"dVenc_Y09=2009-04-25{vazio}");
+                    tx2.AppendLine($"vDup_Y10=100.00{vazio}");
                     tx2.AppendLine($"SALVARCOBRANCA{vazio}");
 
-                    tx2.AppendLine($"infAdFisco_Z02 = OBSERVACAO TESTE DA DANFE - FISCO{vazio}");
-                    tx2.AppendLine($"infCpl_Z03 = OBSERVACAO TESTE DA DANFE CONTRIBUINTE{vazio}");
-                    tx2.AppendLine($"EmailDestinatario ={vazio}");
-                    tx2.AppendLine($"SALVAR ");
+                    tx2.AppendLine($"infAdFisco_Z02=OBSERVACAO TESTE DA DANFE - FISCO{vazio}");
+                    tx2.AppendLine($"infCpl_Z03=OBSERVACAO TESTE DA DANFE CONTRIBUINTE{vazio}");
+                    tx2.AppendLine($"EmailDestinatario={vazio}");
+                    tx2.AppendLine($"SALVAR");
                     
 
                     // Grava os dados no arquivo

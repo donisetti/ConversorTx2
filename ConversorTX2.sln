@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversorTX2", "ConversorTX
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversorTX2.Contexto", "ConversorTX2.Contexto\ConversorTX2.Contexto.csproj", "{360CED60-6730-461E-89BB-56E31C34C262}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransmissaoHttp", "TransmissaoHttp\TransmissaoHttp.csproj", "{1842D68F-606C-4CA8-8EE0-692B0F2D80C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{360CED60-6730-461E-89BB-56E31C34C262}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{360CED60-6730-461E-89BB-56E31C34C262}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{360CED60-6730-461E-89BB-56E31C34C262}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1842D68F-606C-4CA8-8EE0-692B0F2D80C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1842D68F-606C-4CA8-8EE0-692B0F2D80C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1842D68F-606C-4CA8-8EE0-692B0F2D80C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1842D68F-606C-4CA8-8EE0-692B0F2D80C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
