@@ -17,7 +17,7 @@ namespace ConversorTX2
             using (DBContexto db = new DBContexto())
             {
 
-                // Cria e Gravação do arquivo Formato TX2
+                // Cria e Gravação do arquivo Formato TX2 gg
             
                
                 //Console.WriteLine("[sourcecode]");
