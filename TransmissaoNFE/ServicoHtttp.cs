@@ -1,28 +1,23 @@
 ﻿using System;
-using System.Data.Entity;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using ConversorTX2.Contexto;
 
-namespace ConversorTX2
+namespace TransmissaoNFE
 {
-    class Program
+    public class ServicoHtttp
     {
-        static void Main(string[] args)
-        {
-            TransmitirNFe();
-            Console.ReadLine();
-        }
-
-        private static void TransmitirNFe()
+        public  void TransmitirNFe()
         {
             string usuario = "admin";
             string senha = "123mudar";
             string vazio = "";
 
-            Console.WriteLine("Transmissao Nfe");
+           
 
             // Conecta com Base de Dados
             using (DBContexto db = new DBContexto())
@@ -197,33 +192,39 @@ namespace ConversorTX2
             }
         }
 
-        private static void RequisicaoPost(string tx2, string usuario, string senha)
+        public void RequisicaoPost(string tx2, string usuario, string senha)
         {
 
             //
 
             var url = " https://managersaashom.tecnospeed.com.br:7071/ManagerAPIWeb/nfe/envia?CNPJ=08187168000160&grupo=edoc";
 
-            HttpWebRequest objRequest = (HttpWebRequest)WebRequest.Create(url + "&arquivo=" + tx2);
+            try
+            {
+                HttpWebRequest objRequest = (HttpWebRequest)WebRequest.Create(url + "&arquivo=" + tx2);
 
-            byte[] credentialBuffer = new UTF8Encoding().GetBytes(usuario + ":" + senha);
-            objRequest.Headers["Authorization"] = "Basic " + Convert.ToBase64String(credentialBuffer);
+                byte[] credentialBuffer = new UTF8Encoding().GetBytes(usuario + ":" + senha);
+                objRequest.Headers["Authorization"] = "Basic " + Convert.ToBase64String(credentialBuffer);
 
-            objRequest.Method = "POST";
+                objRequest.Method = "POST";
 
-            HttpWebResponse objResponse = (HttpWebResponse)objRequest.GetResponse();
+                HttpWebResponse objResponse = (HttpWebResponse)objRequest.GetResponse();
 
-            Stream stream = objResponse.GetResponseStream();
+                Stream stream = objResponse.GetResponseStream();
 
-            Encoding encoding = Encoding.Default;
+                Encoding encoding = Encoding.Default;
 
-            StreamReader response = new StreamReader(stream, encoding);
+                StreamReader response = new StreamReader(stream, encoding);
 
-            var retorno = response.ReadToEnd();
+                var retorno = response.ReadToEnd();
 
-            Console.WriteLine(retorno);
-
-            //Console.ReadLine();
+                Console.WriteLine(retorno);
+            }
+            catch (Exception erro)
+            {
+                Console.WriteLine(erro.Message);
+            }
+            
         }
     }
 }
